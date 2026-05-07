@@ -292,7 +292,7 @@ export default function Home() {
 
           {/* Full list toggle */}
           <div className={`${styles.fullListWrap} fade-up`}>
-            <h3>Complete List of Procedures</h3>
+            <h3>Our <span className="text-gradient">Main Services</span></h3>
             <div className={styles.fullList}>
               {allServices.map((item, i) => (
                 <div key={i} className={styles.fullListItem}>
@@ -326,8 +326,7 @@ export default function Home() {
       ═══════════════════════════════ */}
       <section className={`${styles.doctorsSection} section`}>
         <div className="container">
-          <div className="section-header fade-up">
-            <span className="eyebrow">EMIS Texas</span>
+          <div className="section-header fade-up" style={{ textAlign: 'center' }}>
             <h2>Meet Our <span className="text-gradient">Board-Certified Specialists</span></h2>
             <div className="divider" />
             <p>Meet the board-certified interventional radiologists leading your care.</p>
@@ -360,8 +359,9 @@ export default function Home() {
                   <div className={styles.docImgOverlay} />
                 </div>
                 <div className={styles.docBody}>
-                  <div className={styles.docCreds}>{doc.creds}</div>
                   <h3 className={styles.docName}>{doc.name}</h3>
+                  <div className={styles.docCreds}>{doc.creds}</div>
+                  <strong style={{ display: 'block', marginTop: '1rem', color: 'var(--primary)' }}>{doc.name}</strong>
                   <p className={styles.docBio}>{doc.bio}</p>
                   <div className={styles.docTrust}>
                     <span className="trust-badge"><ShieldCheck size={14} /> Board Certified</span>
