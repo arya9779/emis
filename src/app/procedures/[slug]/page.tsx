@@ -1,5 +1,3 @@
-'use client';
-
 import { notFound } from 'next/navigation';
 import Link from 'next/link';
 import { 
@@ -15,14 +13,21 @@ import {
 import { procedureCategories } from '@/data/procedures';
 import styles from './procedure.module.css';
 
-interface PageProps {
-  params: {
-    slug: string;
-  };
+export async function generateStaticParams() {
+  return procedureCategories.map((category) => ({
+    slug: category.slug,
+  }));
 }
 
-export default function ProcedurePage({ params }: PageProps) {
-  const category = procedureCategories.find(c => c.slug === params.slug);
+interface PageProps {
+  params: Promise<{
+    slug: string;
+  }>;
+}
+
+export default async function ProcedurePage({ params }: PageProps) {
+  const { slug } = await params;
+  const category = procedureCategories.find(c => c.slug === slug);
 
   if (!category) {
     notFound();
