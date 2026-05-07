@@ -88,8 +88,8 @@ export default function Home() {
         {/* Full-screen background image with dark overlay */}
         <div className={styles.heroCenteredBg}>
           <Image
-            src="/hero-exterior.jpg"
-            alt="EMIS Elite Minimally Invasive Specialists Clinic Exterior"
+            src="/home.png"
+            alt="EMIS Elite Minimally Invasive Specialists Clinic"
             fill
             className={styles.heroCenteredImage}
             priority
