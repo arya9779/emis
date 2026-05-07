@@ -78,13 +78,8 @@
   transition: background 0.35s ease, box-shadow 0.35s ease, top 0.35s ease;
 }
 
-/* When util bar visible, nav sits below it */
-.header { top: calc(0.55rem * 2 + 1rem + 0px); }
-
-/* Account for util bar height (~32px) */
-@supports (transition: max-height 0.35s) {
-  .header { top: 32px; }
-}
+/* Ensure no gap above nav */
+.header { top: 0; }
 
 .header.headerScrolled {
   top: 0;
