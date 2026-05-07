@@ -180,11 +180,11 @@ export default function Home() {
 
               <div className={styles.irChecks}>
                 {[
-                  'Same day scheduling',
-                  'Low cost to payers',
-                  'High-quality service',
-                  'Convenient office setting for patients and providers',
-                  'Personalized healthcare'
+                  'Urgent & Same-Day Scheduling',
+                  'Insurance-Optimized Care',
+                  'Board-Certified Clinical Excellence',
+                  'Convenient Outpatient Facilities',
+                  'Compassionate, Personalized Care Plans'
                 ].map(c => (
                   <div key={c} className={styles.irCheck}>
                     <CheckCircle2 size={18} className={styles.checkIcon} />
@@ -194,7 +194,7 @@ export default function Home() {
               </div>
 
               <Link href="/#contact" className="btn btn-primary" style={{ marginTop: '2.5rem' }}>
-                Schedule a Free Consultation <ChevronRight size={18} />
+                Book Your Consultation <ChevronRight size={18} />
               </Link>
             </div>
           </div>
@@ -207,9 +207,9 @@ export default function Home() {
       <section className={`${styles.servicesSection} section`} id="services">
         <div className="container">
           <div className="section-header">
-            <h2>Specialized Solutions for <span className="text-gradient">Men & Women</span></h2>
+            <h2>Leading-Edge <span className="text-gradient">Clinical Solutions</span></h2>
             <div className="divider" />
-            <p>We provide industry-leading, minimally invasive treatments for complex health conditions, from fibroids to enlarged prostate.</p>
+            <p>Our board-certified specialists utilize the most advanced minimally invasive techniques to treat complex conditions with precision and care.</p>
           </div>
 
           {/* Major Services Grid (UFE & PAE) */}
@@ -295,9 +295,10 @@ export default function Home() {
       <section className={`${styles.doctorsSection} section`}>
         <div className="container">
           <div className="section-header" style={{ textAlign: 'center' }}>
-            <h2>Meet Our <span className="text-gradient">Board-Certified Specialists</span></h2>
+            <div className="eyebrow">Expert-Led Care</div>
+            <h2>Excellence in <span className="text-gradient">Interventional Radiology</span></h2>
             <div className="divider" />
-            <p>Meet the board-certified interventional radiologists leading your care.</p>
+            <p>Our fellowship-trained, board-certified specialists bring over 20 years of expertise to every procedure, ensuring the highest standards of safety and care.</p>
           </div>
 
           <div className={styles.doctorsGrid}>
@@ -355,9 +356,10 @@ export default function Home() {
       <section className={`${styles.testimonialsSection} section`} id="testimonials">
         <div className="container">
           <div className="section-header">
-            <h2>We Love Our <span className="text-gradient">Patients</span></h2>
+            <div className="eyebrow">Patient Success Stories</div>
+            <h2>Proven Clinical <span className="text-gradient">Outcomes</span></h2>
             <div className="divider" />
-            <p>Join the <strong>2,000+ patients</strong> who have experienced life-changing relief through our <strong>5,000+ successful procedures</strong>.</p>
+            <p>Trusted by thousands. Our patients experience a <strong>98% satisfaction rate</strong> across <strong>5,000+ specialized procedures</strong>.</p>
           </div>
 
           {/* Video Testimonials Section */}
