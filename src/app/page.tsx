@@ -299,13 +299,13 @@ export default function Home() {
             {[
               { 
                 name: 'Dr. Lincoln Patel', 
-                img: '/dr-lincoln-patel.png', 
+                img: '/dr-lincolnpatel.png', 
                 creds: 'Vascular and Interventional Radiologist', 
                 bio: 'Dr. Lincoln Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was the head of Interventional Radiology for Radiology Associates of North Texas (RANT) - the largest private practice radiology group in the United States. He completed his undergraduate degree in Electrical Engineering at the University of Michigan, Ann Arbor and completed his medical degree at Medical College of Ohio. Subsequently completing residency in Diagnostic Radiology and fellowship in Vascular and Interventional Radiology at the University of Texas Southwestern' 
               },
               { 
                 name: 'Dr. Jay Patel', 
-                img: '/dr-jay-patel.png', 
+                img: '/dr-jaypatel.png', 
                 creds: 'Vascular and Interventional Radiologist', 
                 bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine\'s Best Doctors in DFW and as Texas Monthly magazine\'s Super Doctors.' 
               },
