@@ -58,23 +58,7 @@ export default function Navbar() {
 
   return (
     <>
-      {/* ── UTILITY BAR ── */}
-      <div className={`${styles.utilBar} ${scrolled ? styles.utilBarHidden : ''}`}>
-        <div className={`container ${styles.utilInner}`}>
-          <div className={styles.utilPhones}>
-            <a href="tel:18172424984" className={styles.utilPhone}>
-              <Phone size={13} />
-              Irving: (817) 242-4984
-            </a>
-          </div>
-          <div className={styles.utilRight}>
-            <span className={styles.utilHours}>Mon–Fri · 8:00 AM – 5:00 PM</span>
-            <span className={styles.utilDot} />
-            <span className={styles.utilTrust}>✓ Board-Certified Interventional Radiologists</span>
-          </div>
-        </div>
-      </div>
-
+    <>
       {/* ── MAIN NAVBAR ── */}
       <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
         <div className={`container ${styles.navInner}`}>

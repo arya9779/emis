@@ -130,11 +130,6 @@ export default function Home() {
         <div className={`container ${styles.heroCenteredContainer}`}>
           <div className={`${styles.heroTextContent} fade-up`}>
             
-            <div className={styles.heroTrustBadge}>
-              <ShieldCheck size={16} />
-              <span>Accepting New Patients — Same-Week Scheduling</span>
-            </div>
-
             <h1 className={styles.heroHeadingLarge}>
               Leading Specialists in<br />
               <span className="text-gradient-light">Vascular & Interventional Radiology</span>
