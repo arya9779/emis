@@ -62,19 +62,18 @@ const services = [
 
 const allServices = [
   'Biopsy (Lung, Bone Marrow, Kidney, Liver, Thyroid)',
-  'Venous Access (Ports, Permacaths, PICCs, Tunneled CVC)',
-  'Dialysis Interventions (Declots, Fistulagrams, Endo AV Fistula Creation)',
-  'Embolizations (Uterine Fibroid, Prostate, Geniculate)',
-  'Spinal Cord Stimulation (Diabetic Neuropathy, Non-Surgical Back Pain)',
+  'Venous access (Ports, Permacaths, PICCs, Tunneled CVC)',
+  'Dialysis Interventions (Declots, Fistulagrams, Endo AV fistula creation)',
+  'Embolizations (Uterine fibroid, Prostate, Geniculate)',
+  'Spinal Cord Stimulation (Peripheral diabetic neuropathy, Non surgical back pain, etc)',
   'Peripheral Arterial Disease (Atherectomy, Angioplasty, Stents)',
-  'Peripheral Venous Disease (Varicose Veins, DVT Intervention)',
-  'Vascular Interventions (Aneurysm Coiling, AVM, Pseudoaneurysm)',
-  'IVC Filter Placement and Retrieval',
-  'Kyphoplasty and Vertebroplasty',
-  'Lumbar Puncture and Intrathecal Chemotherapy',
-  'Drainage (Nephrostomy, PCNL, Cholecystostomy, Lymphocele/Cyst)',
-  'Tumor Ablation (Radiofrequency, Microwave, Cryoablation)',
-  'Varicocele Embolization',
+  'Peripheral Venous Disease (Varicose veins, DVT intervention)',
+  'Vascular Interventions (Aneurysm coiling, AVM treatment, Pseudoaneurysm treatment)',
+  'IVC filter placement and retrieval',
+  'Kyphoplasty and vertebroplasty',
+  'Lumbar puncture and intrathecal chemotherapy',
+  'Drainage: Nephrostomy, PCNL, Cholecystostomy, Lymphocele/Cyst drainage sclerosis',
+  'Tumor Ablation (Radiofrequency, Microwave, Cryoablation)'
 ];
 
 const testimonials = [
@@ -341,8 +340,18 @@ export default function Home() {
 
           <div className={styles.doctorsGrid}>
             {[
-              { name: 'Dr. Jay Patel', img: '/dr-jay-patel.png', creds: 'MD · Board-Certified Interventional Radiologist', bio: 'A pioneer in minimally invasive therapies, Dr. Jay Patel specializes in advanced vascular interventions and oncologic treatments. He is dedicated to providing DFW patients with world-class care through precision image-guided technology.' },
-              { name: 'Dr. Lincoln Patel', img: '/dr-lincoln-patel.png', creds: 'MD · Board-Certified Interventional Radiologist', bio: 'Dr. Lincoln Patel focuses on specialized IR procedures including UFE and PAE. His clinical expertise and patient-first approach ensure that every individual receives a tailored treatment plan for the best possible clinical outcomes.' },
+              { 
+                name: 'Dr. Lincoln Patel', 
+                img: '/dr-lincoln-patel.png', 
+                creds: 'Vascular and Interventional Radiologist', 
+                bio: 'Dr. Lincoln Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was the head of Interventional Radiology for Radiology Associates of North Texas (RANT) - the largest private practice radiology group in the United States. He completed his undergraduate degree in Electrical Engineering at the University of Michigan, Ann Arbor and completed his medical degree at Medical College of Ohio. Subsequently completing residency in Diagnostic Radiology and fellowship in Vascular and Interventional Radiology at the University of Texas Southwestern' 
+              },
+              { 
+                name: 'Dr. Jay Patel', 
+                img: '/dr-jay-patel.png', 
+                creds: 'Vascular and Interventional Radiologist', 
+                bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine’s Best Doctors in DFW and as Texas Monthly magazine’s Super Doctors.' 
+              },
             ].map((doc, i) => (
               <div key={i} className={`${styles.doctorCard} bento-card fade-up`}>
                 <div className={styles.docImgWrap}>
