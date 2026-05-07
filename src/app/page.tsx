@@ -315,24 +315,24 @@ export default function Home() {
                 bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine\'s Best Doctors in DFW and as Texas Monthly magazine\'s Super Doctors.' 
               },
             ].map((doc, i) => (
-              <div key={i} className={`${styles.doctorCard} bento-card`}>
+              <div key={i} className={styles.doctorCard}>
                 <div className={styles.docImgWrap}>
                   <Image
                     src={doc.img}
                     alt={doc.name}
                     fill
                     className={styles.docImg}
-                    sizes="(max-width: 768px) 100vw, 380px"
+                    sizes="(max-width: 768px) 100vw, 500px"
                   />
                   <div className={styles.docImgOverlay} />
                 </div>
                 <div className={styles.docBody}>
-                  <h3 className={styles.docName}>{doc.name}</h3>
                   <div className={styles.docCreds}>{doc.creds}</div>
+                  <h3 className={styles.docName}>{doc.name}</h3>
                   <p className={styles.docBio}>{doc.bio}</p>
                   <div className={styles.docTrust}>
-                    <span className="trust-badge"><ShieldCheck size={14} /> Board Certified</span>
-                    <span className="trust-badge"><Award size={14} /> SIR Member</span>
+                    <span className="trust-badge"><ShieldCheck size={16} /> Board Certified</span>
+                    <span className="trust-badge"><Award size={16} /> SIR Member</span>
                   </div>
                 </div>
               </div>
