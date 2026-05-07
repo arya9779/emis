@@ -1,66 +1,610 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client';
+
+import { useEffect, useRef } from 'react';
+import Link from 'next/link';
+import Image from 'next/image';
+import {
+  ShieldCheck, Activity, CheckCircle2, Award,
+  MapPin, Phone, Mail, Clock, Star,
+  ChevronRight, Heart, Users, Calendar,
+  Brain, Stethoscope, Zap, Droplets, Play
+} from 'lucide-react';
+import styles from './page.module.css';
+
+/* ── ANIMATION HOOK ── */
+function useFadeUp() {
+  const ref = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { (entry.target as HTMLElement).classList.add('visible'); obs.unobserve(entry.target); } },
+      { threshold: 0.12 }
+    );
+    node.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
+    return () => obs.disconnect();
+  }, []);
+  return ref;
+}
+
+/* ── DATA ── */
+const stats = [
+  { value: '10+', label: 'Years of Experience', icon: <Award size={28} /> },
+  { value: '5,000+', label: 'Successful Procedures', icon: <Activity size={28} /> },
+  { value: '2,000+', label: 'Happy Patients', icon: <Users size={28} /> },
+  { value: '100%', label: 'Board Certified', icon: <ShieldCheck size={28} /> },
+];
+
+const services = [
+  { 
+    icon: <Heart size={22} />, 
+    title: 'Uterine Fibroid Embolization', 
+    desc: 'Non-surgical treatment for fibroids — no hysterectomy needed.', 
+    tag: 'Women\'s Health',
+    featured: true,
+    majorField: 'Leading Specialist in Women\'s Health'
+  },
+  { 
+    icon: <Droplets size={22} />, 
+    title: 'Prostate Artery Embolization', 
+    desc: 'Minimally invasive relief for enlarged prostate (BPH).', 
+    tag: 'Men\'s Health',
+    featured: true,
+    majorField: 'Advanced Care for Men\'s Health'
+  },
+  { icon: <Zap size={22} />, title: 'Geniculate Artery Embolization', desc: 'Innovative relief for chronic knee pain without surgery.', tag: 'Pain Relief' },
+  { icon: <Brain size={22} />, title: 'Spinal Cord Stimulation', desc: 'Advanced neuromodulation for diabetic neuropathy & back pain.', tag: 'Pain Relief' },
+  { icon: <Activity size={22} />, title: 'Peripheral Arterial Disease', desc: 'Atherectomy, angioplasty, and stenting for improved blood flow.', tag: 'Vascular' },
+  { icon: <Stethoscope size={22} />, title: 'Dialysis Interventions', desc: 'AV fistula creation, declots, and fistulagrams.', tag: 'Vascular' },
+  { icon: <CheckCircle2 size={22} />, title: 'Tumor Ablation', desc: 'Radiofrequency, microwave, and cryoablation options.', tag: 'Oncology' },
+  { icon: <Users size={22} />, title: 'Biopsy Services', desc: 'Lung, kidney, liver, bone marrow, and thyroid biopsies.', tag: 'Oncology' },
+];
+
+const allServices = [
+  'Biopsy (Lung, Bone Marrow, Kidney, Liver, Thyroid)',
+  'Venous Access (Ports, Permacaths, PICCs, Tunneled CVC)',
+  'Dialysis Interventions (Declots, Fistulagrams, Endo AV Fistula Creation)',
+  'Embolizations (Uterine Fibroid, Prostate, Geniculate)',
+  'Spinal Cord Stimulation (Diabetic Neuropathy, Non-Surgical Back Pain)',
+  'Peripheral Arterial Disease (Atherectomy, Angioplasty, Stents)',
+  'Peripheral Venous Disease (Varicose Veins, DVT Intervention)',
+  'Vascular Interventions (Aneurysm Coiling, AVM, Pseudoaneurysm)',
+  'IVC Filter Placement and Retrieval',
+  'Kyphoplasty and Vertebroplasty',
+  'Lumbar Puncture and Intrathecal Chemotherapy',
+  'Drainage (Nephrostomy, PCNL, Cholecystostomy, Lymphocele/Cyst)',
+  'Tumor Ablation (Radiofrequency, Microwave, Cryoablation)',
+  'Varicocele Embolization',
+];
+
+const testimonials = [
+  { name: 'Sarah Jenkins', title: 'Uterine Fibroid Embolization', stars: 5, text: 'I was told I needed a hysterectomy, but the team at EMIS offered a non-surgical alternative. The UFE procedure changed everything. I was back home the same day and my symptoms are completely gone. I am so grateful for Dr. Patel and his compassionate team.' },
+  { name: 'Michael Henderson', title: 'Prostate Artery Embolization', stars: 5, text: 'After struggling with BPH symptoms for years, PAE was a total game-changer. The procedure was painless and the recovery was incredibly fast. Dr. Patel took the time to explain every detail. I highly recommend EMIS for any man looking for non-surgical relief.' },
+  { name: 'Linda Martinez', title: 'Chronic Knee Pain (GAE)', stars: 5, text: 'Chronic knee pain had stopped me from enjoying long walks. The Geniculate Artery Embolization at EMIS was quick and highly effective. I felt immediate relief and was active again within days. Truly world-class medical expertise right here in Irving.' },
+  { name: 'David Wilson', title: 'Vascular Care (PAD)', stars: 5, text: 'The precision and care at EMIS are unmatched. They treated my PAD with such expertise that I felt confident throughout the entire process. The staff is professional, the facility is high-tech, and the results have been life-changing for my mobility.' },
+];
+
+const tagColors: Record<string, string> = {
+  'Women\'s Health': styles.tagWomen,
+  'Men\'s Health': styles.tagMen,
+  'Pain Relief': styles.tagPain,
+  Vascular: styles.tagVascular,
+  Oncology: styles.tagOncology,
+};
+
+const doctors = [
+  {
+    name: 'Dr. Lincoln Patel',
+    creds: 'Vascular and Interventional Radiologist',
+    bio: 'Dr. Lincoln Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was the head of Interventional Radiology for Radiology Associates of North Texas (RANT) - the largest private practice radiology group in the United States. He completed his undergraduate degree in Electrical Engineering at the University of Michigan, Ann Arbor and completed his medical degree at Medical College of Ohio. Subsequently completing residency in Diagnostic Radiology and fellowship in Vascular and Interventional Radiology at the University of Texas Southwestern',
+  },
+  {
+    name: 'Dr. Jay Patel',
+    creds: 'Vascular and Interventional Radiologist',
+    bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine’s Best Doctors in DFW and as Texas Monthly magazine’s Super Doctors.',
+  }
+];
 
 export default function Home() {
+  const pageRef = useFadeUp();
+
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js logo"
-          width={100}
-          height={20}
-          priority
-        />
-        <div className={styles.intro}>
-          <h1>To get started, edit the page.tsx file.</h1>
-          <p>
-            Looking for a starting point or more instructions? Head over to{" "}
-            <a
-              href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Templates
-            </a>{" "}
-            or the{" "}
-            <a
-              href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learning
-            </a>{" "}
-            center.
-          </p>
+    <main ref={pageRef}>
+
+      {/* ═══════════════════════════════════════
+          HERO — Centered Full-Screen
+      ═══════════════════════════════════════ */}
+      <section className={styles.heroCentered} id="home">
+        
+        {/* Full-screen background image with dark overlay for maximum text contrast */}
+        <div className={styles.heroCenteredBg}>
+          <Image
+            src="/hero-exterior.jpg"
+            alt="EMIS Elite Minimally Invasive Specialists Clinic Exterior"
+            fill
+            className={styles.heroCenteredImage}
+            priority
+          />
+          <div className={styles.heroDarkOverlay} />
         </div>
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={16}
-              height={16}
+
+        <div className={`container ${styles.heroCenteredContainer}`}>
+          <div className={`${styles.heroTextContent} fade-up`}>
+            
+            <div className={styles.heroTrustBadge}>
+              <ShieldCheck size={16} />
+              <span>Accepting New Patients — Same-Week Scheduling</span>
+            </div>
+
+            <h1 className={styles.heroHeadingLarge}>
+              Leading Specialists in<br />
+              <span className="text-gradient-light">Vascular & Interventional Radiology</span>
+            </h1>
+
+            <p className={styles.heroDescLarge}>
+              We are a premier team of board-certified interventional radiologists providing minimally invasive treatments for fibroids, enlarged prostate, and chronic pain. Experience world-class outpatient care with same-day recovery.
+            </p>
+
+            <div className={styles.heroCtasLarge}>
+              <Link href="/#contact" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
+                <Calendar size={20} /> Book Your Consultation
+              </Link>
+              <a href="tel:18172424984" className={styles.heroPhoneLarge}>
+                <Phone size={20} /> (817) 242-4984
+              </a>
+            </div>
+
+            <div className={styles.heroTrustLarge}>
+              <div><CheckCircle2 size={18} /> Same-Day Procedures</div>
+              <div className={styles.heroTrustSep} />
+              <div><CheckCircle2 size={18} /> No Hospital Stays</div>
+              <div className={styles.heroTrustSep} />
+              <div><CheckCircle2 size={18} /> Fast Recovery</div>
+            </div>
+            
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════
+          WHY INTERVENTIONAL RADIOLOGY
+      ═══════════════════════════════ */}
+      <section className={`${styles.irSection} section`} id="about">
+        <div className="container">
+          <div className={`${styles.irGrid} fade-up`}>
+            {/* Image */}
+            <div className={styles.irImgCol}>
+              <div className={styles.irImgFrame}>
+                <Image
+                  src="/emis-elderly-patient.png"
+                  alt="elderly patient with doctor at Emis Health Minimally Invasive Vascular Specialists Dallas Texas Arlington"
+                  fill
+                  className={styles.irImg}
+                  sizes="(max-width: 1024px) 100vw, 50vw"
+                />
+              </div>
+              {/* Overlay trust chip */}
+              <div className={styles.irChip}>
+                <Award size={18} />
+                <div>
+                  <strong>Board Certified</strong>
+                  <span>Society of Interventional Radiology</span>
+                </div>
+              </div>
+            </div>
+
+            {/* Text */}
+            <div className={styles.irText}>
+              <div className="section-header" style={{ textAlign: 'left' }}>
+                <span className="eyebrow">About Us</span>
+                <h2>Meet Our Team of <span className="text-gradient">Highly Experienced Providers</span></h2>
+                <div className="divider" style={{ margin: '1.2rem 0 0' }} />
+              </div>
+
+              <p className={styles.irPara}>
+                Meet Our Team of Highly Experienced Providers who specialize in Vascular and Interventional Radiology.
+              </p>
+
+              <p className={styles.irPara}>
+                Our physicians diagnose and treat a variety of disease and health issues. We use minimally invasive treatment to provide timely, high quality, convenient and low cost care. Our procedures are often used in place of traditional surgery and can eliminate the need for hospitalization.
+              </p>
+
+              <h3 style={{ marginTop: '1.5rem', marginBottom: '0.75rem', fontSize: '1.3rem', color: 'var(--primary)' }}>What Sets Us Apart</h3>
+              <p className={styles.irPara}>
+                We perform routine screening to diagnose vascular health conditions and use our expertise to come up with the right intervention method that improves your quality of life. Here’s what makes our practice stand out from the competition:
+              </p>
+
+              <div className={styles.irChecks}>
+                {[
+                  'Same day scheduling',
+                  'Low cost to payers',
+                  'High-quality service',
+                  'Convenient office setting for patients and providers',
+                  'Personalized healthcare'
+                ].map(c => (
+                  <div key={c} className={styles.irCheck}>
+                    <CheckCircle2 size={18} className={styles.checkIcon} />
+                    <span>{c}</span>
+                  </div>
+                ))}
+              </div>
+
+              <Link href="/#contact" className="btn btn-primary" style={{ marginTop: '2.5rem' }}>
+                Schedule a Free Consultation <ChevronRight size={18} />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════
+          FEATURED SERVICES
+      ═══════════════════════════════ */}
+      <section className={`${styles.servicesSection} section`} id="services">
+        <div className="container">
+          <div className="section-header fade-up">
+            <span className="eyebrow">Advanced Clinical Care</span>
+            <h2>Specialized Solutions for <span className="text-gradient">Men & Women</span></h2>
+            <div className="divider" />
+            <p>We provide industry-leading, minimally invasive treatments for complex health conditions, from fibroids to enlarged prostate.</p>
+          </div>
+
+          {/* Major Services Grid (UFE & PAE) */}
+          <div className={styles.servicesMajorGrid}>
+            {services.filter((s: any) => s.featured).map((s: any, i: number) => (
+              <div 
+                key={i} 
+                className={`${styles.serviceCardMajor} bento-card fade-up`} 
+                style={{ transitionDelay: `${i * 100}ms` }}
+              >
+                <div className={styles.majorServiceHeader}>
+                  <div className={styles.majorServiceIconBox}>
+                    {s.icon}
+                  </div>
+                  <div className={styles.majorServiceCategory}>
+                    <span className={`${styles.serviceTagLarge} ${tagColors[s.tag]}`}>{s.tag}</span>
+                  </div>
+                </div>
+
+                <div className={styles.majorServiceContent}>
+                  <div className={styles.majorServiceBadge}>
+                    <ShieldCheck size={14} className={styles.majorBadgeIcon} />
+                    <span>{s.majorField}</span>
+                  </div>
+                  
+                  <h3 className={styles.majorServiceTitle}>{s.title}</h3>
+                  <p className={styles.majorServiceDesc}>{s.desc}</p>
+                  
+                  <Link href={s.link || "#"} className={styles.majorServiceLink}>
+                    View Detailed Treatment Guide <ChevronRight size={16} />
+                  </Link>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Secondary Services Grid */}
+          <div className={`${styles.servicesSecondaryGrid} fade-up`}>
+            {services.filter((s: any) => !s.featured).map((s: any, i: number) => (
+              <div key={i} className={styles.serviceCardMinor}>
+                <div className={styles.minorServiceHeader}>
+                  <div className={styles.minorServiceIcon}>{s.icon}</div>
+                  <div className={`${styles.serviceTag} ${tagColors[s.tag]}`}>{s.tag}</div>
+                </div>
+                <h4 className={styles.minorServiceTitle}>{s.title}</h4>
+                <p className={styles.minorServiceDesc}>{s.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          {/* Full list toggle */}
+          <div className={`${styles.fullListWrap} fade-up`}>
+            <h3>Complete List of Procedures</h3>
+            <div className={styles.fullList}>
+              {allServices.map((item, i) => (
+                <div key={i} className={styles.fullListItem}>
+                  <ChevronRight size={16} className={styles.listChevron} />
+                  <span>{item}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* CTA banner */}
+          <div className={`${styles.ctaBanner} fade-up`}>
+            <div className={styles.ctaBannerText}>
+              <h2>Ready to Transform Your Health?</h2>
+              <p>Talk to one of our specialists today. Most consultations are free.</p>
+            </div>
+            <div className={styles.ctaBannerActions}>
+              <Link href="/#contact" className="btn btn-cta btn-pulse">
+                <Calendar size={18} /> Book Appointment
+              </Link>
+              <a href="tel:18172424984" className={`btn ${styles.ctaBannerCall}`}>
+                <Phone size={17} /> Call (817) 242-4984
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════
+          MEET THE DOCTORS
+      ═══════════════════════════════ */}
+      <section className={`${styles.doctorsSection} section`}>
+        <div className="container">
+          <div className="section-header fade-up">
+            <span className="eyebrow">EMIS Texas</span>
+            <h2>Meet Our <span className="text-gradient">Board-Certified Specialists</span></h2>
+            <div className="divider" />
+            <p>Meet the board-certified interventional radiologists leading your care.</p>
+          </div>
+
+          <div className={styles.doctorsGrid}>
+            {[
+              { name: 'Dr. Jay Patel', img: '/dr-jay-patel.png', creds: 'MD · Board-Certified Interventional Radiologist', bio: 'A pioneer in minimally invasive therapies, Dr. Jay Patel specializes in advanced vascular interventions and oncologic treatments. He is dedicated to providing DFW patients with world-class care through precision image-guided technology.' },
+              { name: 'Dr. Lincoln Patel', img: '/dr-lincoln-patel.png', creds: 'MD · Board-Certified Interventional Radiologist', bio: 'Dr. Lincoln Patel focuses on specialized IR procedures including UFE and PAE. His clinical expertise and patient-first approach ensure that every individual receives a tailored treatment plan for the best possible clinical outcomes.' },
+            ].map((doc, i) => (
+              <div key={i} className={`${styles.doctorCard} bento-card fade-up`} style={{ transitionDelay: `${i * 120}ms` }}>
+                <div className={styles.docImgWrap}>
+                  <Image
+                    src={doc.img}
+                    alt={doc.name}
+                    fill
+                    className={styles.docImg}
+                    sizes="(max-width: 768px) 100vw, 380px"
+                  />
+                  <div className={styles.docImgOverlay} />
+                </div>
+                <div className={styles.docBody}>
+                  <div className={styles.docCreds}>{doc.creds}</div>
+                  <h3 className={styles.docName}>{doc.name}</h3>
+                  <p className={styles.docBio}>{doc.bio}</p>
+                  <div className={styles.docTrust}>
+                    <span className="trust-badge"><ShieldCheck size={14} /> Board Certified</span>
+                    <span className="trust-badge"><Award size={14} /> SIR Member</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+
+          <div className={styles.doctorsCta}>
+            <Link href="/#about" className="btn btn-primary">
+              Learn More About Our Team <ChevronRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════
+          TRUST CALLOUT
+      ═══════════════════════════════ */}
+      {/* ═══════════════════════════════
+          DOCTORS SECTION
+      ═══════════════════════════════ */}
+      <section className={`${styles.doctorsSection} section`} id="doctors">
+        <div className="container">
+          <div className="section-header fade-up">
+            <span className="eyebrow">Meet the Experts</span>
+            <h2>Our Highly Specialized <span className="text-gradient">Providers</span></h2>
+            <div className="divider" />
+            <p>Our highly specialized staff includes doctors, registered nurses, assistants, and technicians. Here is a complete list of our providers with brief bios:</p>
+          </div>
+
+          <div className={styles.doctorsGrid}>
+            {doctors.map((doc, i) => (
+              <div key={i} className={`${styles.doctorCard} bento-card fade-up`} style={{ transitionDelay: `${i * 150}ms` }}>
+                <div className={styles.physicianInfo}>
+                  <strong>{doc.creds}</strong>
+                  <h3 style={{ fontSize: '1.6rem', color: 'var(--primary)', marginBottom: '0.75rem', fontFamily: 'var(--font-display)', fontWeight: 800 }}>{doc.name}</h3>
+                  <p style={{ fontSize: '0.95rem', color: 'var(--text-2)', lineHeight: 1.7, marginBottom: '1.5rem' }}>{doc.bio}</p>
+                  <a href="#" className="btn btn-outline" style={{ alignSelf: 'flex-start', fontSize: '0.85rem', padding: '0.5rem 1rem' }}>
+                    <Star size={14} style={{ marginRight: '0.4rem', color: '#F59E0B' }} /> Find Me On Super Doctors
+                  </a>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════
+          TESTIMONIALS
+      ═══════════════════════════════ */}
+      <section className={`${styles.testimonialsSection} section`} id="testimonials">
+        <div className="container">
+          <div className="section-header fade-up">
+            <span className="eyebrow">Patient Stories</span>
+            <h2>We Love Our <span className="text-gradient">Patients</span></h2>
+            <div className="divider" />
+            <p>Join the <strong>2,000+ patients</strong> who have experienced life-changing relief through our <strong>5,000+ successful procedures</strong>.</p>
+          </div>
+
+          {/* Video Testimonials Section */}
+          <div className={`${styles.videoReviews} fade-up`}>
+            <div className={styles.videoReviewsHeader}>
+              <div className={styles.videoBadge}>
+                <Play size={14} fill="currentColor" />
+                New Success Stories Every Friday
+              </div>
+              <h3>Featured Video <span className="text-gradient">Success Stories</span></h3>
+            </div>
+            
+            <div className={styles.videoGrid}>
+              <div className={styles.videoPlaceholder}>
+                <div className={styles.videoThumb}>
+                  <Image src="/hero-render-bg.jpg" alt="Video Review Placeholder" fill className={styles.videoImg} />
+                  <div className={styles.playOverlay}>
+                    <div className={styles.playCircle}>
+                      <Play size={32} fill="currentColor" />
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.videoInfo}>
+                  <strong>Patient Transformation: UFE Relief</strong>
+                  <span>&ldquo;I found hope again without surgery...&rdquo;</span>
+                </div>
+              </div>
+              
+              <div className={styles.videoPlaceholder}>
+                <div className={styles.videoThumb}>
+                  <Image src="/ir-live-procedure.jpg" alt="Video Review Placeholder" fill className={styles.videoImg} />
+                  <div className={styles.playOverlay}>
+                    <div className={styles.playCircle}>
+                      <Play size={32} fill="currentColor" />
+                    </div>
+                  </div>
+                </div>
+                <div className={styles.videoInfo}>
+                  <strong>Back to Active Living: PAE Story</strong>
+                  <span>&ldquo;The best decision I ever made for my health...&rdquo;</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div className={styles.testimonialsGrid}>
+            {testimonials.map((t, i) => (
+              <div key={i} className={`${styles.testCard} bento-card fade-up`} style={{ transitionDelay: `${i * 80}ms` }}>
+                <div className={styles.testBadge}>
+                  <ShieldCheck size={12} />
+                  Verified Patient
+                </div>
+                <div className="stars">
+                  {'★★★★★'.split('').slice(0, t.stars).map((s, j) => <span key={j}>{s}</span>)}
+                </div>
+                <p className={styles.testText}>&ldquo;{t.text}&rdquo;</p>
+                <div className={styles.testFooter}>
+                  <div className={styles.testAvatar}>
+                    {t.name.split(' ').map(n => n[0]).join('')}
+                  </div>
+                  <div>
+                    <strong className={styles.testName}>{t.name}</strong>
+                    <span className={styles.testTitle}>{t.title}</span>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════
+          CONTACT / LOCATIONS
+      ═══════════════════════════════ */}
+      <section className={`${styles.contactSection} section`} id="contact">
+        <div className="container">
+          <div className="section-header fade-up">
+            <span className="eyebrow">Get In Touch</span>
+            <h2>Visit Our <span className="text-gradient">Clinic</span></h2>
+            <div className="divider" />
+            <p>Convenient location serving the greater DFW Metroplex.</p>
+          </div>
+
+          <div className={styles.contactGrid}>
+            {/* Location Cards */}
+            <div className={styles.locationsWrapper}>
+              <div className={`${styles.locationCard} bento-card fade-up`}>
+                <div className={styles.locationIcon}><MapPin size={24} /></div>
+                <h3>Irving Location</h3>
+                <p className={styles.locAddr}>2150 Market Place Blvd Suite 140<br />Irving, TX 75063</p>
+                <div className={styles.locDetails}>
+                  <a href="tel:18172424984" className={styles.locPhone}><Phone size={16} /> (817) 242-4984</a>
+                  <div className={styles.locHours}><Clock size={16} /> Mon–Fri: 8:00 AM – 5:00 PM</div>
+                </div>
+                <a
+                  href="https://goo.gl/maps/evaQ5x7YTjtzck2H6"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn btn-outline ${styles.dirBtn}`}
+                >
+                  Get Directions <ChevronRight size={16} />
+                </a>
+              </div>
+
+              <div className={`${styles.locationCard} bento-card fade-up`} style={{ transitionDelay: '80ms' }}>
+                <div className={styles.locationIcon}><MapPin size={24} /></div>
+                <h3>Arlington Location</h3>
+                <p className={styles.locAddr}>3050 S Center St Suite 160<br />Arlington, TX 76014</p>
+                <div className={styles.locDetails}>
+                  <a href="tel:14695995888" className={styles.locPhone}><Phone size={16} /> (469) 599-5888</a>
+                  <div className={styles.locHours}><Clock size={16} /> Mon–Fri: 8:00 AM – 5:00 PM</div>
+                </div>
+                <a
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn btn-outline ${styles.dirBtn}`}
+                >
+                  Get Directions <ChevronRight size={16} />
+                </a>
+              </div>
+            </div>
+
+
+
+            {/* Contact Form */}
+            <div className={`${styles.contactForm} bento-card fade-up`} style={{ transitionDelay: '160ms' }}>
+              <h3>Request an Appointment</h3>
+              <p style={{ color: 'var(--text-2)', marginBottom: '1.5rem', fontSize: '0.93rem' }}>
+                Fill out the form and our team will contact you within 1 business day.
+              </p>
+              <form className={styles.form} onSubmit={e => e.preventDefault()}>
+                <div className={styles.formRow}>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="first-name">First Name *</label>
+                    <input id="first-name" type="text" placeholder="John" required />
+                  </div>
+                  <div className={styles.formGroup}>
+                    <label htmlFor="last-name">Last Name *</label>
+                    <input id="last-name" type="text" placeholder="Doe" required />
+                  </div>
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="email">Email Address *</label>
+                  <input id="email" type="email" placeholder="john@example.com" required />
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="phone-contact">Phone Number *</label>
+                  <input id="phone-contact" type="tel" placeholder="(469) 000-0000" required />
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="procedure">Procedure of Interest</label>
+                  <select id="procedure">
+                    <option value="">Select a procedure...</option>
+                    {allServices.map((s, i) => <option key={i} value={s}>{s}</option>)}
+                  </select>
+                </div>
+                <div className={styles.formGroup}>
+                  <label htmlFor="message">Message</label>
+                  <textarea id="message" rows={3} placeholder="Tell us more about your condition or questions..." />
+                </div>
+                <button type="submit" className="btn btn-cta" style={{ width: '100%', justifyContent: 'center', marginTop: '0.5rem' }}>
+                  <Calendar size={18} /> Request Appointment
+                </button>
+                <p className={styles.formNote}>
+                  <Mail size={14} /> FAX: (469) 262-5688 · info@emishealth.com
+                </p>
+              </form>
+            </div>
+          </div>
+
+          {/* Map */}
+          <div className={`${styles.mapWrap} bento-card fade-up`}>
+            <iframe
+              src="https://maps.google.com/maps?q=3050%20S%20Center%20St%20Suite%20160,%20Arlington,%20TX%2076014&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              width="100%"
+              height="380"
+              style={{ border: 0, borderRadius: '12px', display: 'block' }}
+              allowFullScreen
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+              title="EMIS Health Locations Map"
             />
-            Deploy Now
-          </a>
-          <a
-            className={styles.secondary}
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Documentation
-          </a>
+          </div>
         </div>
-      </main>
-    </div>
+      </section>
+    </main>
   );
 }
