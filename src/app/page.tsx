@@ -25,7 +25,8 @@ const services = [
     desc: 'Non-surgical treatment for fibroids — no hysterectomy needed.', 
     tag: 'Women\'s Health',
     featured: true,
-    majorField: 'Leading Specialist in Women\'s Health'
+    majorField: 'Leading Specialist in Women\'s Health',
+    link: '/procedures/womens-health'
   },
   { 
     icon: <Droplets size={22} />, 
@@ -33,14 +34,15 @@ const services = [
     desc: 'Minimally invasive relief for enlarged prostate (BPH).', 
     tag: 'Men\'s Health',
     featured: true,
-    majorField: 'Advanced Care for Men\'s Health'
+    majorField: 'Advanced Care for Men\'s Health',
+    link: '/procedures/mens-health'
   },
-  { icon: <Zap size={22} />, title: 'Geniculate Artery Embolization', desc: 'Innovative relief for chronic knee pain without surgery.', tag: 'Pain Relief' },
-  { icon: <Brain size={22} />, title: 'Spinal Cord Stimulation', desc: 'Advanced neuromodulation for diabetic neuropathy & back pain.', tag: 'Pain Relief' },
-  { icon: <Activity size={22} />, title: 'Peripheral Arterial Disease', desc: 'Atherectomy, angioplasty, and stenting for improved blood flow.', tag: 'Vascular' },
-  { icon: <Stethoscope size={22} />, title: 'Dialysis Interventions', desc: 'AV fistula creation, declots, and fistulagrams.', tag: 'Vascular' },
-  { icon: <CheckCircle2 size={22} />, title: 'Tumor Ablation', desc: 'Radiofrequency, microwave, and cryoablation options.', tag: 'Oncology' },
-  { icon: <Users size={22} />, title: 'Biopsy Services', desc: 'Lung, kidney, liver, bone marrow, and thyroid biopsies.', tag: 'Oncology' },
+  { icon: <Zap size={22} />, title: 'Geniculate Artery Embolization', desc: 'Innovative relief for chronic knee pain without surgery.', tag: 'Pain Relief', link: '/procedures/msk' },
+  { icon: <Brain size={22} />, title: 'Spinal Cord Stimulation', desc: 'Advanced neuromodulation for diabetic neuropathy & back pain.', tag: 'Pain Relief', link: '/procedures/msk' },
+  { icon: <Activity size={22} />, title: 'Peripheral Arterial Disease', desc: 'Atherectomy, angioplasty, and stenting for improved blood flow.', tag: 'Vascular', link: '/procedures/vascular' },
+  { icon: <Stethoscope size={22} />, title: 'Dialysis Interventions', desc: 'AV fistula creation, declots, and fistulagrams.', tag: 'Vascular', link: '/procedures/dialysis' },
+  { icon: <CheckCircle2 size={22} />, title: 'Tumor Ablation', desc: 'Radiofrequency, microwave, and cryoablation options.', tag: 'Oncology', link: '/procedures/oncology' },
+  { icon: <Users size={22} />, title: 'Biopsy Services', desc: 'Lung, kidney, liver, bone marrow, and thyroid biopsies.', tag: 'Oncology', link: '/procedures/oncology' },
 ];
 
 const allServices = [
@@ -243,13 +245,16 @@ export default function Home() {
           {/* Secondary Services Grid */}
           <div className={styles.servicesSecondaryGrid}>
             {services.filter((s: any) => !s.featured).map((s: any, i: number) => (
-              <div key={i} className={styles.serviceCardMinor}>
+              <Link key={i} href={s.link || "#"} className={styles.serviceCardMinor}>
                 <div className={styles.minorServiceHeader}>
                   <div className={styles.minorServiceIcon}>{s.icon}</div>
                 </div>
                 <h4 className={styles.minorServiceTitle}>{s.title}</h4>
                 <p className={styles.minorServiceDesc}>{s.desc}</p>
-              </div>
+                <div style={{ marginTop: 'auto', paddingTop: '1rem', fontSize: '0.85rem', fontWeight: '700', color: 'var(--secondary)', display: 'flex', alignItems: 'center', gap: '0.25rem' }}>
+                  Learn More <ChevronRight size={14} />
+                </div>
+              </Link>
             ))}
           </div>
 

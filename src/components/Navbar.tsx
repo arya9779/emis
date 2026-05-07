@@ -7,13 +7,13 @@ import Image from 'next/image';
 import styles from './navbar.module.css';
 
 const procedures = [
-  { label: 'Uterine Fibroids (UFE)', href: '/#services', tag: 'Women\'s Health', classTag: 'Women' },
-  { label: 'Prostate Embolization (PAE)', href: '/#services', tag: 'Men\'s Health', classTag: 'Men' },
-  { label: 'Chronic Knee Pain (GAE)', href: '/#services', tag: 'Pain Relief', classTag: 'Pain' },
-  { label: 'Diabetic Neuropathy (SCS)', href: '/#services', tag: 'Pain Relief', classTag: 'Pain' },
-  { label: 'Vascular Care (PAD)', href: '/#services', tag: 'Vascular', classTag: 'Vascular' },
-  { label: 'Dialysis Interventions', href: '/#services', tag: 'Vascular', classTag: 'Vascular' },
-  { label: 'Tumor Ablation', href: '/#services', tag: 'Oncology', classTag: 'Oncology' },
+  { label: 'Uterine Fibroids (UFE)', href: '/procedures/womens-health', tag: 'Women\'s Health', classTag: 'Women' },
+  { label: 'Prostate Embolization (PAE)', href: '/procedures/mens-health', tag: 'Men\'s Health', classTag: 'Men' },
+  { label: 'Chronic Knee Pain (GAE)', href: '/procedures/msk', tag: 'Pain Relief', classTag: 'Pain' },
+  { label: 'MSK Intervention', href: '/procedures/msk', tag: 'Pain Relief', classTag: 'Pain' },
+  { label: 'Vascular Care (PAD)', href: '/procedures/vascular', tag: 'Vascular', classTag: 'Vascular' },
+  { label: 'Dialysis Interventions', href: '/procedures/dialysis', tag: 'Vascular', classTag: 'Vascular' },
+  { label: 'Interventional Oncology', href: '/procedures/oncology', tag: 'Oncology', classTag: 'Oncology' },
 ];
 
 const patientLinks = [
