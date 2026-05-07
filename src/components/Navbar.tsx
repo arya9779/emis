@@ -58,7 +58,6 @@ export default function Navbar() {
 
   return (
     <>
-    <>
       {/* ── MAIN NAVBAR ── */}
       <header className={`${styles.header} ${scrolled ? styles.headerScrolled : ''}`}>
         <div className={`container ${styles.navInner}`}>
