@@ -1,6 +1,5 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -10,22 +9,6 @@ import {
   Brain, Stethoscope, Zap, Droplets, Play
 } from 'lucide-react';
 import styles from './page.module.css';
-
-/* ── ANIMATION HOOK ── */
-function useFadeUp() {
-  const ref = useRef<HTMLDivElement>(null);
-  useEffect(() => {
-    const node = ref.current;
-    if (!node) return;
-    const obs = new IntersectionObserver(
-      ([entry]) => { if (entry.isIntersecting) { (entry.target as HTMLElement).classList.add('visible'); obs.unobserve(entry.target); } },
-      { threshold: 0.12 }
-    );
-    node.querySelectorAll('.fade-up').forEach(el => obs.observe(el));
-    return () => obs.disconnect();
-  }, []);
-  return ref;
-}
 
 /* ── DATA ── */
 const stats = [
@@ -91,31 +74,16 @@ const tagColors: Record<string, string> = {
   Oncology: styles.tagOncology,
 };
 
-const doctors = [
-  {
-    name: 'Dr. Lincoln Patel',
-    creds: 'Vascular and Interventional Radiologist',
-    bio: 'Dr. Lincoln Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was the head of Interventional Radiology for Radiology Associates of North Texas (RANT) - the largest private practice radiology group in the United States. He completed his undergraduate degree in Electrical Engineering at the University of Michigan, Ann Arbor and completed his medical degree at Medical College of Ohio. Subsequently completing residency in Diagnostic Radiology and fellowship in Vascular and Interventional Radiology at the University of Texas Southwestern',
-  },
-  {
-    name: 'Dr. Jay Patel',
-    creds: 'Vascular and Interventional Radiologist',
-    bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine’s Best Doctors in DFW and as Texas Monthly magazine’s Super Doctors.',
-  }
-];
-
 export default function Home() {
-  const pageRef = useFadeUp();
-
   return (
-    <main ref={pageRef}>
+    <main>
 
       {/* ═══════════════════════════════════════
           HERO — Centered Full-Screen
       ═══════════════════════════════════════ */}
       <section className={styles.heroCentered} id="home">
         
-        {/* Full-screen background image with dark overlay for maximum text contrast */}
+        {/* Full-screen background image with dark overlay */}
         <div className={styles.heroCenteredBg}>
           <Image
             src="/hero-exterior.jpg"
@@ -123,24 +91,25 @@ export default function Home() {
             fill
             className={styles.heroCenteredImage}
             priority
+            sizes="100vw"
           />
           <div className={styles.heroDarkOverlay} />
         </div>
 
         <div className={`container ${styles.heroCenteredContainer}`}>
-          <div className={`${styles.heroTextContent} fade-up`}>
+          <div className={styles.heroTextContent}>
             
             <h1 className={styles.heroHeadingLarge}>
               Leading Specialists in<br />
-              <span className="text-gradient-light">Vascular & Interventional Radiology</span>
+              Vascular & Interventional Radiology
             </h1>
 
             <p className={styles.heroDescLarge}>
-              We are a premier team of board-certified interventional radiologists providing minimally invasive treatments for fibroids, enlarged prostate, and chronic pain. Experience world-class outpatient care with same-day recovery.
+              Board-certified interventional radiologists providing minimally invasive treatments for fibroids, enlarged prostate, and chronic pain. Same-day outpatient care with fast recovery.
             </p>
 
             <div className={styles.heroCtasLarge}>
-              <Link href="/#contact" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.1rem' }}>
+              <Link href="/#contact" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem' }}>
                 <Calendar size={20} /> Book Your Consultation
               </Link>
               <a href="tel:18172424984" className={styles.heroPhoneLarge}>
@@ -165,7 +134,7 @@ export default function Home() {
       ═══════════════════════════════ */}
       <section className={`${styles.irSection} section`} id="about">
         <div className="container">
-          <div className={`${styles.irGrid} fade-up`}>
+          <div className={styles.irGrid}>
             {/* Image */}
             <div className={styles.irImgCol}>
               <div className={styles.irImgFrame}>
@@ -190,7 +159,6 @@ export default function Home() {
             {/* Text */}
             <div className={styles.irText}>
               <div className="section-header" style={{ textAlign: 'left' }}>
-                <span className="eyebrow">About Us</span>
                 <h2>Meet Our Team of <span className="text-gradient">Highly Experienced Providers</span></h2>
                 <div className="divider" style={{ margin: '1.2rem 0 0' }} />
               </div>
@@ -205,7 +173,7 @@ export default function Home() {
 
               <h3 style={{ marginTop: '1.5rem', marginBottom: '0.75rem', fontSize: '1.3rem', color: 'var(--primary)' }}>What Sets Us Apart</h3>
               <p className={styles.irPara}>
-                We perform routine screening to diagnose vascular health conditions and use our expertise to come up with the right intervention method that improves your quality of life. Here’s what makes our practice stand out from the competition:
+                We perform routine screening to diagnose vascular health conditions and use our expertise to come up with the right intervention method that improves your quality of life. Here's what makes our practice stand out from the competition:
               </p>
 
               <div className={styles.irChecks}>
@@ -236,8 +204,7 @@ export default function Home() {
       ═══════════════════════════════ */}
       <section className={`${styles.servicesSection} section`} id="services">
         <div className="container">
-          <div className="section-header fade-up">
-            <span className="eyebrow">Advanced Clinical Care</span>
+          <div className="section-header">
             <h2>Specialized Solutions for <span className="text-gradient">Men & Women</span></h2>
             <div className="divider" />
             <p>We provide industry-leading, minimally invasive treatments for complex health conditions, from fibroids to enlarged prostate.</p>
@@ -248,14 +215,11 @@ export default function Home() {
             {services.filter((s: any) => s.featured).map((s: any, i: number) => (
               <div 
                 key={i} 
-                className={`${styles.serviceCardMajor} bento-card fade-up`} 
+                className={`${styles.serviceCardMajor} bento-card`} 
               >
                 <div className={styles.majorServiceHeader}>
                   <div className={styles.majorServiceIconBox}>
                     {s.icon}
-                  </div>
-                  <div className={styles.majorServiceCategory}>
-                    <span className={`${styles.serviceTagLarge} ${tagColors[s.tag]}`}>{s.tag}</span>
                   </div>
                 </div>
 
@@ -277,12 +241,11 @@ export default function Home() {
           </div>
 
           {/* Secondary Services Grid */}
-          <div className={`${styles.servicesSecondaryGrid} fade-up`}>
+          <div className={styles.servicesSecondaryGrid}>
             {services.filter((s: any) => !s.featured).map((s: any, i: number) => (
               <div key={i} className={styles.serviceCardMinor}>
                 <div className={styles.minorServiceHeader}>
                   <div className={styles.minorServiceIcon}>{s.icon}</div>
-                  <div className={`${styles.serviceTag} ${tagColors[s.tag]}`}>{s.tag}</div>
                 </div>
                 <h4 className={styles.minorServiceTitle}>{s.title}</h4>
                 <p className={styles.minorServiceDesc}>{s.desc}</p>
@@ -290,8 +253,8 @@ export default function Home() {
             ))}
           </div>
 
-          {/* Full list toggle */}
-          <div className={`${styles.fullListWrap} fade-up`}>
+          {/* Full list */}
+          <div className={styles.fullListWrap}>
             <h3>Our <span className="text-gradient">Main Services</span></h3>
             <div className={styles.fullList}>
               {allServices.map((item, i) => (
@@ -304,7 +267,7 @@ export default function Home() {
           </div>
 
           {/* CTA banner */}
-          <div className={`${styles.ctaBanner} fade-up`}>
+          <div className={styles.ctaBanner}>
             <div className={styles.ctaBannerText}>
               <h2>Ready to Transform Your Health?</h2>
               <p>Talk to one of our specialists today. Most consultations are free.</p>
@@ -326,7 +289,7 @@ export default function Home() {
       ═══════════════════════════════ */}
       <section className={`${styles.doctorsSection} section`}>
         <div className="container">
-          <div className="section-header fade-up" style={{ textAlign: 'center' }}>
+          <div className="section-header" style={{ textAlign: 'center' }}>
             <h2>Meet Our <span className="text-gradient">Board-Certified Specialists</span></h2>
             <div className="divider" />
             <p>Meet the board-certified interventional radiologists leading your care.</p>
@@ -344,10 +307,10 @@ export default function Home() {
                 name: 'Dr. Jay Patel', 
                 img: '/dr-jay-patel.png', 
                 creds: 'Vascular and Interventional Radiologist', 
-                bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine’s Best Doctors in DFW and as Texas Monthly magazine’s Super Doctors.' 
+                bio: 'Dr. Jay Patel is a vascular and interventional radiologist serving the DFW area for more than 20 years. He previously was part of American Radiology Associates (ARA). He was chief of the department of radiology at Baylor Scott and White Irving and section chief of Interventional Radiology at Baylor Scott in White Irving, for 15 years. He completed his undergraduate degree in Biological Sciences at Southern Methodist University in Dallas and completed his medical degree at the University of Texas. Subsequently, completing residency in diagnostic radiology at UT Southwestern, where he was chief resident and fellowship in Vascular and Interventional Radiology at Baylor University Medical Center. Dr. Patel has been consistently named as one of D Magazine\'s Best Doctors in DFW and as Texas Monthly magazine\'s Super Doctors.' 
               },
             ].map((doc, i) => (
-              <div key={i} className={`${styles.doctorCard} bento-card fade-up`}>
+              <div key={i} className={`${styles.doctorCard} bento-card`}>
                 <div className={styles.docImgWrap}>
                   <Image
                     src={doc.img}
@@ -361,7 +324,6 @@ export default function Home() {
                 <div className={styles.docBody}>
                   <h3 className={styles.docName}>{doc.name}</h3>
                   <div className={styles.docCreds}>{doc.creds}</div>
-                  <strong style={{ display: 'block', marginTop: '1rem', color: 'var(--primary)' }}>{doc.name}</strong>
                   <p className={styles.docBio}>{doc.bio}</p>
                   <div className={styles.docTrust}>
                     <span className="trust-badge"><ShieldCheck size={14} /> Board Certified</span>
@@ -387,15 +349,14 @@ export default function Home() {
       ═══════════════════════════════ */}
       <section className={`${styles.testimonialsSection} section`} id="testimonials">
         <div className="container">
-          <div className="section-header fade-up">
-            <span className="eyebrow">Patient Stories</span>
+          <div className="section-header">
             <h2>We Love Our <span className="text-gradient">Patients</span></h2>
             <div className="divider" />
             <p>Join the <strong>2,000+ patients</strong> who have experienced life-changing relief through our <strong>5,000+ successful procedures</strong>.</p>
           </div>
 
           {/* Video Testimonials Section */}
-          <div className={`${styles.videoReviews} fade-up`}>
+          <div className={styles.videoReviews}>
             <div className={styles.videoReviewsHeader}>
               <div className={styles.videoBadge}>
                 <Play size={14} fill="currentColor" />
@@ -407,7 +368,7 @@ export default function Home() {
             <div className={styles.videoGrid}>
               <div className={styles.videoPlaceholder}>
                 <div className={styles.videoThumb}>
-                  <Image src="/hero-render-bg.jpg" alt="Video Review Placeholder" fill className={styles.videoImg} />
+                  <Image src="/hero-render-bg.jpg" alt="Video Review Placeholder" fill className={styles.videoImg} sizes="(max-width: 768px) 100vw, 50vw" />
                   <div className={styles.playOverlay}>
                     <div className={styles.playCircle}>
                       <Play size={32} fill="currentColor" />
@@ -422,7 +383,7 @@ export default function Home() {
               
               <div className={styles.videoPlaceholder}>
                 <div className={styles.videoThumb}>
-                  <Image src="/ir-live-procedure.jpg" alt="Video Review Placeholder" fill className={styles.videoImg} />
+                  <Image src="/hero-render-bg.jpg" alt="Video Review Placeholder" fill className={styles.videoImg} sizes="(max-width: 768px) 100vw, 50vw" />
                   <div className={styles.playOverlay}>
                     <div className={styles.playCircle}>
                       <Play size={32} fill="currentColor" />
@@ -439,7 +400,7 @@ export default function Home() {
 
           <div className={styles.testimonialsGrid}>
             {testimonials.map((t, i) => (
-              <div key={i} className={`${styles.testCard} bento-card fade-up`}>
+              <div key={i} className={`${styles.testCard} bento-card`}>
                 <div className={styles.testBadge}>
                   <ShieldCheck size={12} />
                   Verified Patient
@@ -468,8 +429,7 @@ export default function Home() {
       ═══════════════════════════════ */}
       <section className={`${styles.contactSection} section`} id="contact">
         <div className="container">
-          <div className="section-header fade-up">
-            <span className="eyebrow">Get In Touch</span>
+          <div className="section-header">
             <h2>Visit Our <span className="text-gradient">Clinic</span></h2>
             <div className="divider" />
             <p>Convenient location serving the greater DFW Metroplex.</p>
@@ -478,7 +438,7 @@ export default function Home() {
           <div className={styles.contactGrid}>
             {/* Location Cards */}
             <div className={styles.locationsWrapper}>
-              <div className={`${styles.locationCard} bento-card fade-up`}>
+              <div className={`${styles.locationCard} bento-card`}>
                 <div className={styles.locationIcon}><MapPin size={24} /></div>
                 <h3>Irving Location</h3>
                 <p className={styles.locAddr}>2150 Market Place Blvd Suite 140<br />Irving, TX 75063</p>
@@ -496,7 +456,7 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className={`${styles.locationCard} bento-card fade-up`} style={{ transitionDelay: '80ms' }}>
+              <div className={`${styles.locationCard} bento-card`}>
                 <div className={styles.locationIcon}><MapPin size={24} /></div>
                 <h3>Arlington Location</h3>
                 <p className={styles.locAddr}>3050 S Center St Suite 160<br />Arlington, TX 76014</p>
@@ -518,7 +478,7 @@ export default function Home() {
 
 
             {/* Contact Form */}
-            <div className={`${styles.contactForm} bento-card fade-up`} style={{ transitionDelay: '160ms' }}>
+            <div className={`${styles.contactForm} bento-card`}>
               <h3>Request an Appointment</h3>
               <p style={{ color: 'var(--text-2)', marginBottom: '1.5rem', fontSize: '0.93rem' }}>
                 Fill out the form and our team will contact you within 1 business day.
@@ -564,7 +524,7 @@ export default function Home() {
           </div>
 
           {/* Map */}
-          <div className={`${styles.mapWrap} bento-card fade-up`}>
+          <div className={`${styles.mapWrap} bento-card`}>
             <iframe
               src="https://maps.google.com/maps?q=3050%20S%20Center%20St%20Suite%20160,%20Arlington,%20TX%2076014&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"

@@ -279,17 +279,7 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   font-weight: 700;
 }
 
-/* ===== SCROLL ANIMATIONS ===== */
-.fade-up {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: opacity 0.4s var(--ease-out), transform 0.4s var(--ease-out);
-}
-
-.fade-up.visible {
-  opacity: 1;
-  transform: translateY(0);
-}
+/* ===== SCROLL ANIMATIONS (disabled — content always visible) ===== */
 
 /* ===== RESPONSIVE ===== */
 @media (max-width: 768px) {
