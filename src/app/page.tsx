@@ -103,7 +103,7 @@ export default function Home() {
             
             <h1 className={styles.heroHeadingLarge}>
               Leading Specialists in<br />
-              Vascular & Interventional Radiology
+              <span>Vascular & Interventional Radiology</span>
             </h1>
 
             <p className={styles.heroDescLarge}>
