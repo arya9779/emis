@@ -42,7 +42,7 @@ export default async function ProcedurePage({ params }: PageProps) {
           <Link href="/" className="btn btn-outline" style={{ color: '#fff', borderColor: 'rgba(255,255,255,0.3)', marginBottom: '2rem' }}>
             <ArrowLeft size={16} /> Back to Home
           </Link>
-          <h1 className={styles.heroTitle}>{category.title}</h1>
+          <h1 className={styles.heroTitle}><span>{category.title}</span></h1>
           <p className={styles.heroIntro}>{category.intro}</p>
         </div>
       </section>
