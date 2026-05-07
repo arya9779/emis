@@ -255,7 +255,6 @@ export default function Home() {
               <div 
                 key={i} 
                 className={`${styles.serviceCardMajor} bento-card fade-up`} 
-                style={{ transitionDelay: `${i * 100}ms` }}
               >
                 <div className={styles.majorServiceHeader}>
                   <div className={styles.majorServiceIconBox}>
@@ -345,7 +344,7 @@ export default function Home() {
               { name: 'Dr. Jay Patel', img: '/dr-jay-patel.png', creds: 'MD · Board-Certified Interventional Radiologist', bio: 'A pioneer in minimally invasive therapies, Dr. Jay Patel specializes in advanced vascular interventions and oncologic treatments. He is dedicated to providing DFW patients with world-class care through precision image-guided technology.' },
               { name: 'Dr. Lincoln Patel', img: '/dr-lincoln-patel.png', creds: 'MD · Board-Certified Interventional Radiologist', bio: 'Dr. Lincoln Patel focuses on specialized IR procedures including UFE and PAE. His clinical expertise and patient-first approach ensure that every individual receives a tailored treatment plan for the best possible clinical outcomes.' },
             ].map((doc, i) => (
-              <div key={i} className={`${styles.doctorCard} bento-card fade-up`} style={{ transitionDelay: `${i * 120}ms` }}>
+              <div key={i} className={`${styles.doctorCard} bento-card fade-up`}>
                 <div className={styles.docImgWrap}>
                   <Image
                     src={doc.img}
@@ -377,37 +376,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* ═══════════════════════════════
-          TRUST CALLOUT
-      ═══════════════════════════════ */}
-      {/* ═══════════════════════════════
-          DOCTORS SECTION
-      ═══════════════════════════════ */}
-      <section className={`${styles.doctorsSection} section`} id="doctors">
-        <div className="container">
-          <div className="section-header fade-up">
-            <span className="eyebrow">Meet the Experts</span>
-            <h2>Our Highly Specialized <span className="text-gradient">Providers</span></h2>
-            <div className="divider" />
-            <p>Our highly specialized staff includes doctors, registered nurses, assistants, and technicians. Here is a complete list of our providers with brief bios:</p>
-          </div>
 
-          <div className={styles.doctorsGrid}>
-            {doctors.map((doc, i) => (
-              <div key={i} className={`${styles.doctorCard} bento-card fade-up`} style={{ transitionDelay: `${i * 150}ms` }}>
-                <div className={styles.physicianInfo}>
-                  <strong>{doc.creds}</strong>
-                  <h3 style={{ fontSize: '1.6rem', color: 'var(--primary)', marginBottom: '0.75rem', fontFamily: 'var(--font-display)', fontWeight: 800 }}>{doc.name}</h3>
-                  <p style={{ fontSize: '0.95rem', color: 'var(--text-2)', lineHeight: 1.7, marginBottom: '1.5rem' }}>{doc.bio}</p>
-                  <a href="#" className="btn btn-outline" style={{ alignSelf: 'flex-start', fontSize: '0.85rem', padding: '0.5rem 1rem' }}>
-                    <Star size={14} style={{ marginRight: '0.4rem', color: '#F59E0B' }} /> Find Me On Super Doctors
-                  </a>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
       {/* ═══════════════════════════════
           TESTIMONIALS
@@ -466,7 +435,7 @@ export default function Home() {
 
           <div className={styles.testimonialsGrid}>
             {testimonials.map((t, i) => (
-              <div key={i} className={`${styles.testCard} bento-card fade-up`} style={{ transitionDelay: `${i * 80}ms` }}>
+              <div key={i} className={`${styles.testCard} bento-card fade-up`}>
                 <div className={styles.testBadge}>
                   <ShieldCheck size={12} />
                   Verified Patient
