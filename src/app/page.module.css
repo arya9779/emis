@@ -4,11 +4,12 @@
 
 .heroAnatomical {
   position: relative;
-  min-height: 80vh;
+  height: 100vh;
+  min-height: 600px;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 10rem 1.5rem 6rem;
+  padding: 2rem 1.5rem;
   background: #fff;
   overflow: hidden;
 }
@@ -21,7 +22,7 @@
 }
 
 .heroDiagramImage {
-  object-fit: contain;
+  object-fit: cover;
   object-position: center;
 }
 
