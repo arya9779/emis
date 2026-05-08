@@ -82,33 +82,17 @@ export default function Home() {
     <main>
 
       {/* ═══════════════════════════════════════
-          HERO SECTION — Unified & Optimized
+          HERO SECTION — Anatomical Focus
       ═══════════════════════════════════════ */}
-      <section className={styles.heroCentered} id="home">
-        <div className={styles.heroCenteredBg}>
-          {/* Anatomical Diagram Layer */}
-          <div className={styles.heroDiagramBg}>
-            <Image
-              src="/image.png"
-              alt="Interventional Radiology Anatomical Illustration"
-              fill
-              className={styles.heroDiagramImage}
-              priority
-            />
-          </div>
-
-          {/* Hospital Building Layer (Bottom) */}
-          <div className={styles.heroHospitalLayer}>
-            <Image
-              src="/home.png"
-              alt="EMIS Elite Minimally Invasive Specialists Clinic"
-              fill
-              className={styles.heroCenteredImage}
-              priority
-              sizes="100vw"
-            />
-          </div>
-          <div className={styles.heroLightOverlay} />
+      <section className={styles.heroAnatomical} id="home">
+        <div className={styles.heroDiagramBg}>
+          <Image
+            src="/image.png"
+            alt="Interventional Radiology Anatomical Illustration"
+            fill
+            className={styles.heroDiagramImage}
+            priority
+          />
         </div>
 
         <div className={`container ${styles.heroCenteredContainer}`}>
@@ -143,6 +127,23 @@ export default function Home() {
             </div>
             
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          HOSPITAL SECTION — Architectural Focus
+      ═══════════════════════════════════════ */}
+      <section className={styles.heroHospitalSection}>
+        <div className={styles.heroHospitalLayer}>
+          <Image
+            src="/home.png"
+            alt="EMIS Elite Minimally Invasive Specialists Clinic"
+            fill
+            className={styles.heroCenteredImage}
+            priority
+            sizes="100vw"
+          />
+          <div className={styles.heroLightOverlay} />
         </div>
       </section>
 
