@@ -26,8 +26,7 @@
 
 .heroCenteredImage {
   object-fit: cover;
-  object-position: center 5%;
-  filter: brightness(0.85);
+  object-position: center 95%; /* Push building to the bottom */
   opacity: 0.8;
 }
 
