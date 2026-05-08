@@ -89,7 +89,7 @@ export default function Home() {
           {/* Anatomical Diagram Layer */}
           <div className={styles.heroDiagramBg}>
             <Image
-              src="/hero-diagram.png"
+              src="/image.png"
               alt="Interventional Radiology Anatomical Illustration"
               fill
               className={styles.heroDiagramImage}
