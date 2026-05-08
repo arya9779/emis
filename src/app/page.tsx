@@ -102,14 +102,16 @@ export default function Home() {
         <div className={`container ${styles.heroCenteredContainer}`}>
           <div className={styles.heroTextContent}>
             
+            <div className={styles.heroSpecialties}>
+              <span>Uterine Fibroids</span>
+              <span>Enlarged Prostate</span>
+              <span>Chronic Pain</span>
+            </div>
+
             <h1 className={styles.heroHeadingLarge}>
               Leading Specialists in<br />
               <span>Vascular & Interventional Radiology</span>
             </h1>
-
-            <p className={styles.heroDescLarge}>
-              Board-certified interventional radiologists providing minimally invasive treatments for fibroids, enlarged prostate, and chronic pain. Same-day outpatient care with fast recovery.
-            </p>
 
             <div className={styles.heroCtasLarge}>
               <Link href="/#contact" className="btn btn-primary" style={{ padding: '1rem 2rem', fontSize: '1.05rem' }}>
