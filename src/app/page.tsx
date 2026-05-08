@@ -82,9 +82,21 @@ export default function Home() {
     <main>
 
       {/* ═══════════════════════════════════════
-          HERO TEXT SECTION
+          HERO SECTION — Unified & Optimized
       ═══════════════════════════════════════ */}
-      <section className={styles.heroTextSection} id="home">
+      <section className={styles.heroCentered} id="home">
+        <div className={styles.heroCenteredBg}>
+          <Image
+            src="/home.png"
+            alt="EMIS Elite Minimally Invasive Specialists Clinic"
+            fill
+            className={styles.heroCenteredImage}
+            priority
+            sizes="100vw"
+          />
+          <div className={styles.heroLightOverlay} />
+        </div>
+
         <div className={`container ${styles.heroCenteredContainer}`}>
           <div className={styles.heroTextContent}>
             
@@ -117,23 +129,6 @@ export default function Home() {
             </div>
             
           </div>
-        </div>
-      </section>
-
-      {/* ═══════════════════════════════════════
-          PARALLAX IMAGE SECTION
-      ═══════════════════════════════════════ */}
-      <section className={styles.heroParallaxSection}>
-        <div className={styles.parallaxBg}>
-          <Image
-            src="/home.png"
-            alt="EMIS Elite Minimally Invasive Specialists Clinic Building"
-            fill
-            className={styles.parallaxImage}
-            priority
-            sizes="100vw"
-          />
-          <div className={styles.parallaxOverlay} />
         </div>
       </section>
 

@@ -2,47 +2,38 @@
    HERO — Centered Full-Screen
 ═══════════════════════════════════════ */
 
-.heroTextSection {
-  background: #fff;
-  min-height: 80vh;
+.heroCentered {
+  position: relative;
+  height: 60vw;
+  max-height: 100vh;
+  min-height: 700px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  padding: 10rem 1.5rem 6rem;
-  position: relative;
-  z-index: 10;
-}
-
-.heroParallaxSection {
-  position: relative;
-  height: 200vh; /* Taller parent enables the sticky scroll duration */
-  z-index: 5;
-  background: #fff;
-}
-
-.parallaxBg {
-  position: sticky;
-  top: 0;
-  height: 100vh; /* Sticky element size */
-  width: 100%;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 10rem 1.5rem 2rem;
+  background: #fff;
 }
 
-.parallaxImage {
+.heroCenteredBg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+}
+
+.heroCenteredImage {
   object-fit: cover;
-  object-position: center;
-  transform: scale(1.05);
+  object-position: center 5%;
 }
 
-.parallaxOverlay {
+.heroLightOverlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 15%, rgba(255,255,255,0) 85%, rgba(255,255,255,1) 100%);
-  z-index: 2;
-  pointer-events: none;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 35%, rgba(255, 255, 255, 0) 100%);
+  z-index: 1;
 }
 
 .heroCenteredContainer {

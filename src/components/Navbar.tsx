@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect, useRef } from 'react';
-import { Phone, CalendarCheck, Menu, X, ChevronDown } from 'lucide-react';
+import { Phone, CalendarCheck, Menu, X, ChevronDown, ChevronRight } from 'lucide-react';
 import Image from 'next/image';
 import styles from './navbar.module.css';
 
