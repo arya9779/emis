@@ -15,16 +15,20 @@
 
 .heroParallaxSection {
   position: relative;
-  height: 100vh;
+  height: 200vh; /* Taller parent enables the sticky scroll duration */
   z-index: 5;
+  background: #fff;
 }
 
 .parallaxBg {
   position: sticky;
   top: 0;
-  height: 100vh;
+  height: 100vh; /* Sticky element size */
   width: 100%;
   overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .parallaxImage {
