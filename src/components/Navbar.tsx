@@ -102,8 +102,11 @@ export default function Navbar() {
                         role="menuitem"
                         onClick={() => setDropdownOpen(false)}
                       >
-                        <span className={`${styles.dropTag} ${styles[`tag${p.classTag}`]}`}>{p.tag}</span>
-                        {p.label}
+                        <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                          <span className={`${styles.dropTag} ${styles[`tag${p.classTag}`]}`}>{p.tag}</span>
+                          {p.label}
+                        </div>
+                        <ChevronRight size={14} style={{ opacity: 0.5 }} />
                       </Link>
                     ))}
                   </div>
@@ -140,6 +143,7 @@ export default function Navbar() {
                         onClick={() => setPatientsDropOpen(false)}
                       >
                         {p.label}
+                        <ChevronRight size={14} style={{ opacity: 0.5 }} />
                       </Link>
                     ))}
                   </div>
