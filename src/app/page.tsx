@@ -42,6 +42,8 @@ const services = [
   { icon: <Stethoscope size={22} />, title: 'Dialysis Interventions', desc: 'AV fistula creation, declots, and fistulagrams.', tag: 'Vascular', link: '/procedures/dialysis' },
   { icon: <CheckCircle2 size={22} />, title: 'Tumor Ablation', desc: 'Radiofrequency, microwave, and cryoablation options.', tag: 'Oncology', link: '/procedures/oncology' },
   { icon: <Users size={22} />, title: 'Biopsy Services', desc: 'Lung, kidney, liver, bone marrow, and thyroid biopsies.', tag: 'Oncology', link: '/procedures/oncology' },
+  { icon: <Activity size={22} />, title: 'IVC Filter Placement', desc: 'Placement and retrieval for blood clot protection.', tag: 'Vascular', link: '/procedures/vascular' },
+  { icon: <ShieldCheck size={22} />, title: 'Kyphoplasty', desc: 'Minimally invasive relief for spinal compression fractures.', tag: 'Pain Relief', link: '/procedures/msk' },
 ];
 
 const allServices = [
