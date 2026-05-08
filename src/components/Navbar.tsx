@@ -156,7 +156,7 @@ export default function Navbar() {
               <Phone size={16} />
               (817) 242-4984
             </a>
-            <Link href="/#contact" className="btn btn-cta" style={{ boxShadow: '0 8px 24px rgba(8,145,178,0.3)', padding: '0.65rem 1.6rem' }}>
+            <Link href="/#contact" className="btn btn-teal" style={{ boxShadow: '0 8px 24px rgba(8,145,178,0.25)', padding: '0.65rem 1.6rem' }}>
               <CalendarCheck size={17} />
               Book Appointment
             </Link>

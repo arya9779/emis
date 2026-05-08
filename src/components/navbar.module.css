@@ -75,27 +75,36 @@
   left: 0;
   right: 0;
   z-index: 900;
-  transition: background 0.35s ease, box-shadow 0.35s ease, top 0.35s ease;
+  transition: all 0.4s var(--ease-out);
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-bottom: 1px solid rgba(11, 45, 78, 0.08);
+  box-shadow: 0 4px 20px rgba(11, 45, 78, 0.04);
 }
 
-/* Ensure no gap above nav */
-.header { top: 0; }
-
-.header.headerScrolled {
-  top: 0;
+.headerScrolled {
   background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  box-shadow: 0 4px 20px rgba(11, 45, 78, 0.08);
-  border-bottom: 1px solid rgba(11, 45, 78, 0.05);
+  box-shadow: 0 10px 40px rgba(11, 45, 78, 0.12);
+  border-bottom-color: rgba(11, 45, 78, 0.05);
 }
 
-/* Default (not scrolled) */
-.header {
-  background: rgba(255, 255, 255, 0.98);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid rgba(11, 45, 78, 0.05);
+.utilBar {
+  background: linear-gradient(to right, var(--primary), var(--primary-mid));
+  color: #fff;
+  font-size: 0.78rem;
+  padding: 0.6rem 0;
+  transition: all 0.4s var(--ease-out);
+  overflow: hidden;
+  max-height: 44px;
+  font-family: var(--font-body);
+  letter-spacing: 0.3px;
+}
+
+.utilBarHidden {
+  max-height: 0;
+  opacity: 0;
+  padding: 0;
 }
 
 .navInner {

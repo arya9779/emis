@@ -15,7 +15,6 @@ const stats = [
   { value: '10+', label: 'Years of Experience', icon: <Award size={28} /> },
   { value: '5,000+', label: 'Successful Procedures', icon: <Activity size={28} /> },
   { value: '2,000+', label: 'Happy Patients', icon: <Users size={28} /> },
-  { value: '100%', label: 'Board Certified', icon: <ShieldCheck size={28} /> },
 ];
 
 const services = [
@@ -149,13 +148,6 @@ export default function Home() {
                 />
               </div>
               {/* Overlay trust chip */}
-              <div className={styles.irChip}>
-                <Award size={18} />
-                <div>
-                  <strong>Board Certified</strong>
-                  <span>Society of Interventional Radiology</span>
-                </div>
-              </div>
             </div>
 
             {/* Text */}
@@ -331,10 +323,6 @@ export default function Home() {
                   <div className={styles.docCreds}>{doc.creds}</div>
                   <h3 className={styles.docName}>{doc.name}</h3>
                   <p className={styles.docBio}>{doc.bio}</p>
-                  <div className={styles.docTrust}>
-                    <span className="trust-badge"><ShieldCheck size={16} /> Board Certified</span>
-                    <span className="trust-badge"><Award size={16} /> SIR Member</span>
-                  </div>
                 </div>
               </div>
             ))}
@@ -408,10 +396,6 @@ export default function Home() {
           <div className={styles.testimonialsGrid}>
             {testimonials.map((t, i) => (
               <div key={i} className={`${styles.testCard} bento-card`}>
-                <div className={styles.testBadge}>
-                  <ShieldCheck size={12} />
-                  Verified Patient
-                </div>
                 <div className="stars">
                   {'★★★★★'.split('').slice(0, t.stars).map((s, j) => <span key={j}>{s}</span>)}
                 </div>
