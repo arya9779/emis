@@ -6,12 +6,13 @@
   position: relative;
   height: 56.25vw;          /* 16:9 aspect ratio */
   max-height: 100vh;
-  min-height: 540px;
+  min-height: 600px;
   display: flex;
-  align-items: center;
+  align-items: flex-start;  /* Move text to the top area (sky) */
   justify-content: center;
   overflow: hidden;
-  padding: 5rem 1.5rem 2rem;
+  padding: 8.5rem 1.5rem 2rem;
+  background: #fff;
 }
 
 .heroCenteredBg {
@@ -25,7 +26,7 @@
 
 .heroCenteredImage {
   object-fit: cover;
-  object-position: center 30%;
+  object-position: center 68%; /* Bring image down */
 }
 
 .heroCenteredContainer {
@@ -39,7 +40,8 @@
 .heroDarkOverlay {
   position: absolute;
   top: 0; left: 0; right: 0; bottom: 0;
-  background: linear-gradient(180deg, rgba(11, 45, 78, 0.8) 0%, rgba(2, 18, 36, 0.6) 40%, rgba(2, 18, 36, 0.85) 100%);
+  /* Light overlay to keep EMIS logo visible on building */
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.45) 35%, rgba(255, 255, 255, 0) 100%);
   z-index: 1;
 }
 
@@ -53,7 +55,7 @@
   max-width: 1280px;
   width: 100%;
   padding: 0 2rem;
-  color: #fff;
+  color: var(--primary);
 }
 
 .heroHeadingLarge {
@@ -62,14 +64,14 @@
   font-weight: 800;
   line-height: 1.05;
   margin-bottom: 1.5rem;
-  color: #fff;
+  color: var(--primary);
   letter-spacing: -0.04em;
-  text-shadow: 0 4px 15px rgba(0,0,0,0.35);
+  text-shadow: 0 2px 10px rgba(255,255,255,0.8);
 }
 
 .heroHeadingLarge span {
   display: block;
-  background: linear-gradient(to right, #fff, var(--secondary-light), #fff);
+  background: linear-gradient(to right, var(--primary), var(--secondary));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -81,11 +83,10 @@
 .heroDescLarge {
   font-size: clamp(1rem, 1.25vw, 1.15rem);
   line-height: 1.6;
-  font-weight: 400;
+  font-weight: 500;
   max-width: 760px;
   margin: 0 auto 2.5rem auto;
-  color: rgba(255, 255, 255, 0.95);
-  text-shadow: 0 2px 10px rgba(0,0,0,0.2);
+  color: var(--text);
 }
 
 .heroCtasLarge {
