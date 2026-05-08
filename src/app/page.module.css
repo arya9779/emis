@@ -4,14 +4,14 @@
 
 .heroCentered {
   position: relative;
-  height: 56.25vw;          /* 16:9 aspect ratio */
+  height: 60vw;             /* Slightly taller */
   max-height: 100vh;
-  min-height: 600px;
+  min-height: 700px;
   display: flex;
-  align-items: center;      /* Center content vertically */
+  align-items: flex-start;  /* Move text to the top */
   justify-content: center;
   overflow: hidden;
-  padding: 5rem 1.5rem 2rem;
+  padding: 9rem 1.5rem 2rem;
   background: #fff;
 }
 
@@ -26,7 +26,7 @@
 
 .heroCenteredImage {
   object-fit: cover;
-  object-position: center 20%; /* Move image down to show more sky */
+  object-position: center 5%; /* PUSH BUILDING EVEN LOWER */
 }
 
 .heroCenteredContainer {
