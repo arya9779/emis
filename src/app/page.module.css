@@ -15,8 +15,8 @@
 
 .heroParallaxSection {
   position: relative;
-  height: 100vh;
-  overflow: hidden;
+  height: 120vh; /* Taller for more scroll time */
+  overflow: clip;
   background: #fff;
   z-index: 5;
 }
@@ -26,11 +26,23 @@
   top: 0;
   height: 100vh;
   width: 100%;
+  overflow: hidden;
 }
 
 .parallaxImage {
   object-fit: cover;
   object-position: center;
+  transition: transform 0.1s linear;
+  /* Cinematic zoom-out effect can be added via JS or just fixed scale for now */
+  transform: scale(1.1); 
+}
+
+.parallaxOverlay {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background: linear-gradient(to bottom, rgba(255,255,255,1) 0%, rgba(255,255,255,0) 20%, rgba(255,255,255,0) 80%, rgba(255,255,255,1) 100%);
+  z-index: 2;
+  pointer-events: none;
 }
 
 .heroCenteredContainer {
