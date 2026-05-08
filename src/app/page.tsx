@@ -86,14 +86,28 @@ export default function Home() {
       ═══════════════════════════════════════ */}
       <section className={styles.heroCentered} id="home">
         <div className={styles.heroCenteredBg}>
-          <Image
-            src="/home.png"
-            alt="EMIS Elite Minimally Invasive Specialists Clinic"
-            fill
-            className={styles.heroCenteredImage}
-            priority
-            sizes="100vw"
-          />
+          {/* Anatomical Diagram Layer */}
+          <div className={styles.heroDiagramBg}>
+            <Image
+              src="/hero-diagram.png"
+              alt="Interventional Radiology Anatomical Illustration"
+              fill
+              className={styles.heroDiagramImage}
+              priority
+            />
+          </div>
+
+          {/* Hospital Building Layer (Bottom) */}
+          <div className={styles.heroHospitalLayer}>
+            <Image
+              src="/home.png"
+              alt="EMIS Elite Minimally Invasive Specialists Clinic"
+              fill
+              className={styles.heroCenteredImage}
+              priority
+              sizes="100vw"
+            />
+          </div>
           <div className={styles.heroLightOverlay} />
         </div>
 

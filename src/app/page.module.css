@@ -24,9 +24,28 @@
   z-index: 0;
 }
 
+.heroDiagramBg {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 1;
+  opacity: 0.4; /* Very subtle anatomical background */
+}
+
+.heroDiagramImage {
+  object-fit: contain; /* Keep the illustrations looking sharp */
+  object-position: center;
+  padding: 5%;
+}
+
+.heroHospitalLayer {
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  z-index: 2;
+}
+
 .heroCenteredImage {
   object-fit: cover;
-  object-position: center 95%; /* Push building to the bottom */
+  object-position: center 95%; /* Keep building at the bottom */
   opacity: 0.8;
 }
 
