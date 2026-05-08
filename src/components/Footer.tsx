@@ -112,16 +112,6 @@ export default function Footer() {
             </div>
           </div>
 
-          <div className={styles.contactItem} style={{ marginTop: '1rem' }}>
-            <MapPin size={16} className={styles.contactIcon} style={{ flexShrink: 0 }} />
-            <div>
-              <strong>Arlington</strong>
-              <p>3050 S Center St Suite 160<br />Arlington, TX 76014</p>
-              <a href="tel:14695995888" className={styles.contactPhone}>
-                <Phone size={13} /> (469) 599-5888
-              </a>
-            </div>
-          </div>
 
 
           <div className={styles.contactItem}>

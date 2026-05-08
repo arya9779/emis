@@ -142,7 +142,7 @@ export default function Home() {
               <div className={styles.irImgFrame}>
                 <Image
                   src="/emis-elderly-patient.png"
-                  alt="elderly patient with doctor at Emis Health Minimally Invasive Vascular Specialists Dallas Texas Arlington"
+                  alt="elderly patient with doctor at Emis Health Minimally Invasive Vascular Specialists Dallas Texas"
                   fill
                   className={styles.irImg}
                   sizes="(max-width: 1024px) 100vw, 50vw"
@@ -463,23 +463,6 @@ export default function Home() {
                 </a>
               </div>
 
-              <div className={`${styles.locationCard} bento-card`}>
-                <div className={styles.locationIcon}><MapPin size={24} /></div>
-                <h3>Arlington Location</h3>
-                <p className={styles.locAddr}>3050 S Center St Suite 160<br />Arlington, TX 76014</p>
-                <div className={styles.locDetails}>
-                  <a href="tel:14695995888" className={styles.locPhone}><Phone size={16} /> (469) 599-5888</a>
-                  <div className={styles.locHours}><Clock size={16} /> Mon–Fri: 8:00 AM – 5:00 PM</div>
-                </div>
-                <a
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className={`btn btn-outline ${styles.dirBtn}`}
-                >
-                  Get Directions <ChevronRight size={16} />
-                </a>
-              </div>
             </div>
 
 
@@ -533,7 +516,7 @@ export default function Home() {
           {/* Map */}
           <div className={`${styles.mapWrap} bento-card`}>
             <iframe
-              src="https://maps.google.com/maps?q=3050%20S%20Center%20St%20Suite%20160,%20Arlington,%20TX%2076014&t=&z=13&ie=UTF8&iwloc=&output=embed"
+              src="https://maps.google.com/maps?q=2150%20Market%20Place%20Blvd%20Suite%20140,%20Irving,%20TX%2075063&t=&z=13&ie=UTF8&iwloc=&output=embed"
               width="100%"
               height="380"
               style={{ border: 0, borderRadius: '12px', display: 'block' }}
