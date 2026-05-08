@@ -2,31 +2,35 @@
    HERO — Centered Full-Screen
 ═══════════════════════════════════════ */
 
-.heroCentered {
-  position: relative;
-  height: 60vw;             /* Slightly taller */
-  max-height: 100vh;
-  min-height: 700px;
-  display: flex;
-  align-items: flex-start;  /* Move text to the top */
-  justify-content: center;
-  overflow: hidden;
-  padding: 9rem 1.5rem 2rem;
+.heroTextSection {
   background: #fff;
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10rem 1.5rem 6rem;
+  position: relative;
+  z-index: 10;
 }
 
-.heroCenteredBg {
-  position: absolute;
+.heroParallaxSection {
+  position: relative;
+  height: 100vh;
+  overflow: hidden;
+  background: #fff;
+  z-index: 5;
+}
+
+.parallaxBg {
+  position: sticky;
   top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 0;
+  height: 100vh;
+  width: 100%;
 }
 
-.heroCenteredImage {
+.parallaxImage {
   object-fit: cover;
-  object-position: center 5%; /* PUSH BUILDING EVEN LOWER */
+  object-position: center;
 }
 
 .heroCenteredContainer {

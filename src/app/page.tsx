@@ -82,23 +82,9 @@ export default function Home() {
     <main>
 
       {/* ═══════════════════════════════════════
-          HERO — Centered Full-Screen
+          HERO TEXT SECTION
       ═══════════════════════════════════════ */}
-      <section className={styles.heroCentered} id="home">
-        
-        {/* Full-screen background image with dark overlay */}
-        <div className={styles.heroCenteredBg}>
-          <Image
-            src="/home.png"
-            alt="EMIS Elite Minimally Invasive Specialists Clinic"
-            fill
-            className={styles.heroCenteredImage}
-            priority
-            sizes="100vw"
-          />
-          <div className={styles.heroDarkOverlay} />
-        </div>
-
+      <section className={styles.heroTextSection} id="home">
         <div className={`container ${styles.heroCenteredContainer}`}>
           <div className={styles.heroTextContent}>
             
@@ -131,6 +117,22 @@ export default function Home() {
             </div>
             
           </div>
+        </div>
+      </section>
+
+      {/* ═══════════════════════════════════════
+          PARALLAX IMAGE SECTION
+      ═══════════════════════════════════════ */}
+      <section className={styles.heroParallaxSection}>
+        <div className={styles.parallaxBg}>
+          <Image
+            src="/home.png"
+            alt="EMIS Elite Minimally Invasive Specialists Clinic Building"
+            fill
+            className={styles.parallaxImage}
+            priority
+            sizes="100vw"
+          />
         </div>
       </section>
 
