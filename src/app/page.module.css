@@ -26,7 +26,7 @@
 
 .heroCenteredImage {
   object-fit: cover;
-  object-position: center 68%; /* Bring image down */
+  object-position: center 20%; /* Move image down to show more sky */
 }
 
 .heroCenteredContainer {
